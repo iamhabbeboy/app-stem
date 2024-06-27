@@ -2,7 +2,7 @@
     {
       "id": 0,
       "name": "Matrix Labs",
-      "email": "",
+      "email": "matrixlab@gmail.com",
       "image":
         "https://images.unsplash.com/photo-1718964382789-57b24c5c4b97?q=80&w=3088&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "summary":
@@ -10,7 +10,8 @@
     },
     {
         "id": 1,
-        "name": "Matrix Labs",
+        "name": "Meta Labs",
+        "email": "meta@gmail.com",
         "image":
           "https://images.unsplash.com/photo-1718964382789-57b24c5c4b97?q=80&w=3088&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "summary":
@@ -19,6 +20,7 @@
       {
         "id": 2,
         "name": "Bashlabs Innovation",
+        "email": "bashlabs@gmail.com",
         "image":
           "https://plus.unsplash.com/premium_photo-1715876234808-771930b663f6?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90b3MtZmVlZHwxMzN8fHxlbnwwfHx8fHw%3D",
         "summary":
@@ -27,6 +29,7 @@
       {
         "id": 3,
         "name": "BCE Innovation",
+        "email": "bceinnovation@gmail.com",
         "image":
           "https://plus.unsplash.com/premium_photo-1715876234808-771930b663f6?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90b3MtZmVlZHwxMzN8fHxlbnwwfHx8fHw%3D",
         "summary":

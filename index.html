@@ -17,16 +17,25 @@
     <div class="modal-backdrop">
       <div class="modal-body">
         <div class="modal-header">
-          <h2>Summary</h2>
+          <h2 id="summary-headline">Summary</h2>
           <button onClick="closeModal()">&times;</button>
         </div>
         <div class="summary">
-          <div>
+          <div id="hide-summary-image">
             <img src="" width="150" id="summary-image" />
           </div>
           <div class="content">
-            <h3>About <span id="summary-team-name"></span></h3>
+            <h3 id="summary-label">
+              About <span id="summary-team-name"></span>
+            </h3>
             <p id="summary-about"></p>
+            <div class="form-group" id="hide-form">
+              <form onsubmit="return handleVoter()">
+                <label> Email Address: </label>
+                <input type="email" name="email" required class="input-form" id="email"/>
+                <button class="input-btn">Submit</button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
@@ -39,21 +48,17 @@
 
       async function fetchAndDisplayData() {
         try {
-          // Fetch the JSON data from the local file
           const response = await fetch("candidate.json");
           if (!response.ok) {
             throw new Error(
               "Network response was not ok " + response.statusText
             );
           }
-          // Parse the JSON data
           const data = await response.json();
-          // Get the container element
           const container = document.getElementById("data-container");
           fetchedCandidates = data;
-          // Create and append elements to display the data
           data.forEach((item) => {
-            const itemElement = `      
+            const itemElement = `
             <div class="candidate" id="${item.id}">
         <div class="max-layout">
           <img
@@ -63,11 +68,19 @@
         </div>
         <div class="team-name">
           <span>
-            <h3>${item.name.length > 20 ? item.name.substring(0, 20) + '...' : item.name || ""}</h3>
-            <span class="read-more" onClick="openModal(${item.id})" data-id="${item.id}">Read More</span>
+            <h3>${
+              item.name.length > 20
+                ? item.name.substring(0, 20) + "..."
+                : item.name || ""
+            }</h3>
+            <span class="read-more" onClick="openModal(${item.id})" data-id="${
+              item.id
+            }">Read More</span>
           </span>
         </div>
-        <button class="vote-btn" title="click to vote">
+        <button class="vote-btn" title="click to vote" onClick="openModal(${
+          item.id
+        }, true)">
           <span class="vote-action">Vote </span>
           <span class="vote-count">0</span>
         </button>
@@ -82,7 +95,8 @@
         }
       }
 
-      function openModal(itemId) {
+      function openModal(itemId, isVoting = false) {
+        document.querySelector(".modal-backdrop").style.display = "block";
         const findCandidate = fetchedCandidates.find(
           (cand) => cand.id === itemId
         );
@@ -90,7 +104,21 @@
           throw new Error("Candidate not found");
         }
         if (findCandidate) {
-          document.querySelector(".modal-backdrop").style.display = "block";
+          if (isVoting) {
+          document.querySelector("#email").setAttribute("data-candidate-email", findCandidate.email);
+          document.querySelector("#hide-form").style.display = "block";
+           document.querySelector("#summary-about").style.display = "none";
+            document.querySelector("#summary-label").style.display = "none";
+            document.querySelector("#summary-headline").innerText =
+              "Enter your email to vote";
+            document.querySelector("#hide-summary-image").style.display =
+              "none";
+            return false;
+          }
+          document.querySelector("#hide-form").style.display = "none";
+           document.querySelector("#summary-about").style.display = "block";
+          document.querySelector("#summary-label").style.display = "block";
+          document.querySelector("#hide-summary-image").style.display = "block";
           document.querySelector("#summary-image").src =
             findCandidate.image || "";
           document.querySelector("#summary-team-name").innerText =
@@ -102,6 +130,35 @@
 
       function closeModal() {
         document.querySelector(".modal-backdrop").style.display = "none";
+      }
+
+      function processVote() {
+        document.querySelector(".modal-backdrop").style.display = "block";
+      }
+
+      function handleVoter() {
+
+      }
+
+      function handleVote(candidate) {
+        const header = {
+          method: "POST",
+          mode: "cors",
+          cache: "no-cache",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
+        };
+        if (!candidate.email) {
+          return alert("Email is required");
+        }
+        const body = {
+          voter_email: candidate.email,
+          candidate_email: candidate.email,
+        };
+        const url = "https://backend.steamfunfest.qwizfun.com/user/vote";
+        const resp = fetch(url, header);
       }
     </script>
   </body>

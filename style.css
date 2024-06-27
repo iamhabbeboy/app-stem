@@ -145,7 +145,41 @@ body {
     margin-top: 4px;
 }
 
+.form-group {
+    padding-bottom: 10px;
+}
+
+.input-form {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.input-btn {
+    padding: 10px 15px;
+    background: #000;
+    font-weight: bold;
+    color: #FFF;
+    border: 0px;
+    margin-top: 4px;
+}
+.input-btn:hover {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+@media only screen and (min-width: 600px) {
+    .content {
+        margin-left: 0px;
+        padding-right: 20px;
+    }
+}
+
 @media only screen and (max-width: 580px) {
+    .content {
+        margin-left: 0px;
+        padding-right: 20px;
+    }
     .layout {
         margin: auto;
     }
@@ -165,6 +199,14 @@ body {
 }
 
 @media only screen and (max-width: 480px) {
+    .content {
+        margin-left: 0px;
+        padding-right: 20px;
+    }
+    .input-form {
+        width: 90%;
+    }
+
     .layout {
         flex-direction: column;
         margin: auto;
