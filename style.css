@@ -14,7 +14,6 @@ body {
 .candidate {
     display: block;
     color: #FFF;
-    text-align: center;
     margin-left: 10px;
 }
 
@@ -66,7 +65,7 @@ body {
 .team-name > span {
     position: relative;
     /*top: -75px;*/
-    top: -45px;
+    top: -65px;
     background: rgba(0, 0, 0, 0.8);
     display: block;
     color: #eee;
@@ -77,8 +76,17 @@ body {
     /*width: 12.0rem;*/
 }
 .team-name > span h3 {
-    text-decoration: underline;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
 }
+.read-more {
+    text-decoration: underline;
+    text-align: left;
+}
+.read-more:hover {
+    text-decoration: none;
+}
+
 .team-name > span:hover h3 {
     text-decoration: none;
 }

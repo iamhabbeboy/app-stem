@@ -63,7 +63,8 @@
         </div>
         <div class="team-name">
           <span>
-            <h3 onClick="openModal(${item.id})" data-id="${item.id}">${item.name} &raquo;</h3>
+            <h3>${item.name.length > 20 ? item.name.substring(0, 20) + '...' : item.name || ""}</h3>
+            <span class="read-more" onClick="openModal(${item.id})" data-id="${item.id}">Read More</span>
           </span>
         </div>
         <button class="vote-btn" title="click to vote">
