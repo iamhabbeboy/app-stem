@@ -30,10 +30,10 @@
             </h3>
             <p id="summary-about"></p>
             <div class="form-group" id="hide-form">
-              <form onsubmit="return handleVoter()">
+              <form method="POST" onsubmit="return handleVoter()">
                 <label> Email Address: </label>
                 <input type="email" name="email" required class="input-form" id="email"/>
-                <button class="input-btn">Submit</button>
+                <button class="input-btn" type="submit">Submit</button>
               </form>
             </div>
           </div>
@@ -137,11 +137,11 @@
       }
 
       function handleVoter() {
-
-      }
-
-      function handleVote(candidate) {
-        const header = {
+        const email = document.querySelector("#email");
+        const candidateEmail = email.getAttribute("data-candidate-email")
+        console.log(email.value, " and ", candidateEmail)
+        return false;
+        {{/* const header = {
           method: "POST",
           mode: "cors",
           cache: "no-cache",
@@ -158,7 +158,7 @@
           candidate_email: candidate.email,
         };
         const url = "https://backend.steamfunfest.qwizfun.com/user/vote";
-        const resp = fetch(url, header);
+        const resp = fetch(url, header); */}}
       }
     </script>
   </body>
