@@ -1,0 +1,185 @@
+body {
+    font-family: 'Rajdhani', sans-serif, georgia;
+}
+
+.layout {
+    background: #eee;
+    display: flex;
+    flex-direction: row;
+    padding: 10px 0px;
+    width: 100%;
+     flex-wrap: wrap;
+}
+
+.candidate {
+    display: block;
+    color: #FFF;
+    text-align: center;
+    margin-left: 10px;
+}
+
+.max-layout {
+    height: 200px;
+    overflow: hidden;
+}
+
+.candidate img {
+    display: block;
+}
+
+.vote-btn {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background: #000;
+    color: #FFF;
+    border: 0px solid transparent;
+    border-radius: 5px;
+}
+
+.vote-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+}
+
+.vote-action {
+    width: 80%;
+    font-size: 1.3rem;
+    padding: 10px;
+}
+
+.vote-count {
+    background: #607D3B;
+    font-size: 0.9rem;
+    padding: 10px;
+    font-weight: bold;
+    padding-top: 12px;
+}
+
+.team-name {
+    position: absolute;
+    z-index: 1;
+    color: #000;
+    height: 1px;
+}
+
+.team-name > span {
+    position: relative;
+    /*top: -75px;*/
+    top: -45px;
+    background: rgba(0, 0, 0, 0.8);
+    display: block;
+    color: #eee;
+    padding-left: 4px;
+    padding-right: 4px;
+    word-wrap: break-word; 
+    cursor: pointer;
+    /*width: 12.0rem;*/
+}
+.team-name > span h3 {
+    text-decoration: underline;
+}
+.team-name > span:hover h3 {
+    text-decoration: none;
+}
+
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+}
+
+.modal-body {   
+    width: 50%;
+    background: #FFF;
+    margin: 3.3rem auto;
+    padding: 10px;
+    border-radius: 9px;
+    box-shadow: 6px 6px 6px 0px #333;
+}
+
+.summary {
+    display: flex;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-header > button {
+    background: transparent;
+    font-weight: bold;
+    font-size: 1.3rem;
+    border: 0px;
+}
+
+.modal-header > button:hover {
+    cursor: pointer;
+}
+
+.content {
+    margin-left: 20px;
+}
+
+.content h3 {
+    margin: 0px;
+    padding: 0px;
+}
+
+.content p {
+    padding-top: 0px;
+    margin-top: 4px;
+}
+
+@media only screen and (max-width: 580px) {
+    .layout {
+        margin: auto;
+    }
+    .candidate {   
+        margin-bottom: 5px;
+        width: 45.99%;
+    }
+    .candidate img {   
+        margin-bottom: 5px;
+        width: 100%;
+    }
+
+    .modal-body {
+        width: 90%;
+        margin: 20px auto;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .layout {
+        flex-direction: column;
+        margin: auto;
+    }
+
+    .candidate {   
+        margin-bottom: 5px;
+        width: 95%;
+    }
+    
+    .candidate img {
+        width: 100%;
+    }
+
+    .modal-body {
+        width: 90%;
+        margin: auto;
+    }
+
+    .summary {
+        flex-direction: column;
+    }
+    .content {
+        margin-left: 0px;
+    }
+}

@@ -1,9 +1,107 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <title> Welcome to this place</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to this place</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Hello, world</h1>
+    <div class="layout" id="data-container"></div>
+    <div class="modal-backdrop">
+      <div class="modal-body">
+        <div class="modal-header">
+          <h2>Summary</h2>
+          <button onClick="closeModal()">&times;</button>
+        </div>
+        <div class="summary">
+          <div>
+            <img src="" width="150" id="summary-image" />
+          </div>
+          <div class="content">
+            <h3>About <span id="summary-team-name"></span></h3>
+            <p id="summary-about"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      let fetchedCandidates = [];
+      document.addEventListener("DOMContentLoaded", async (event) => {
+        await fetchAndDisplayData();
+      });
+
+      async function fetchAndDisplayData() {
+        try {
+          // Fetch the JSON data from the local file
+          const response = await fetch("candidate.json");
+          if (!response.ok) {
+            throw new Error(
+              "Network response was not ok " + response.statusText
+            );
+          }
+          // Parse the JSON data
+          const data = await response.json();
+          // Get the container element
+          const container = document.getElementById("data-container");
+          fetchedCandidates = data;
+          // Create and append elements to display the data
+          data.forEach((item) => {
+            const itemElement = `      
+            <div class="candidate" id="${item.id}">
+        <div class="max-layout">
+          <img
+            src="${item.image}"
+            width="200"
+          />
+        </div>
+        <div class="team-name">
+          <span>
+            <h3 onClick="openModal(${item.id})" data-id="${item.id}">${item.name} &raquo;</h3>
+          </span>
+        </div>
+        <button class="vote-btn" title="click to vote">
+          <span class="vote-action">Vote </span>
+          <span class="vote-count">0</span>
+        </button>
+      </div>`;
+            container.innerHTML += itemElement;
+          });
+        } catch (error) {
+          console.error(
+            "There has been a problem with your fetch operation:",
+            error
+          );
+        }
+      }
+
+      function openModal(itemId) {
+        const findCandidate = fetchedCandidates.find(
+          (cand) => cand.id === itemId
+        );
+        if (!findCandidate) {
+          throw new Error("Candidate not found");
+        }
+        if (findCandidate) {
+          document.querySelector(".modal-backdrop").style.display = "block";
+          document.querySelector("#summary-image").src =
+            findCandidate.image || "";
+          document.querySelector("#summary-team-name").innerText =
+            findCandidate.name || "";
+          document.querySelector("#summary-about").innerText =
+            findCandidate.summary || "";
+        }
+      }
+
+      function closeModal() {
+        document.querySelector(".modal-backdrop").style.display = "none";
+      }
+    </script>
   </body>
 </html>
