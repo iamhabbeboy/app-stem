@@ -168,6 +168,14 @@ body {
     background: rgba(0, 0, 0, 0.6);
 }
 
+#show-error {
+    padding: 3px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    display: none;
+}
+
 @media only screen and (min-width: 600px) {
     .content {
         padding-right: 20px;

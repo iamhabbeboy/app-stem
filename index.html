@@ -30,11 +30,30 @@
             </h3>
             <p id="summary-about"></p>
             <div class="form-group" id="hide-form">
+              <!--
               <form method="POST" onsubmit="return handleVoter()">
-                <label> Email Address: </label>
-                <input type="email" name="email" required class="input-form" id="email"/>
-                <button class="input-btn" type="submit">Submit</button>
-              </form>
+                -->
+              <div id="show-error"></div>
+              <label> Email Address: </label>
+              <input
+                type="email"
+                name="email"
+                required
+                class="input-form"
+                id="email"
+              />
+              <button class="input-btn" id="input-btn" onCLick="handleVoter()">
+                Submit
+              </button>
+              <span id="loader" style="display: none"
+                ><img
+                  src="loader.svg"
+                  width="30"
+                  alt="loading..."
+                  style="position: relative; top: 10px"
+                />
+                <i>please wait...</i></span
+              >
             </div>
           </div>
         </div>
@@ -82,7 +101,7 @@
           item.id
         }, true)">
           <span class="vote-action">Vote </span>
-          <span class="vote-count">0</span>
+          <span class="vote-count" id="vote-${item.id}">0</span>
         </button>
       </div>`;
             container.innerHTML += itemElement;
@@ -105,9 +124,14 @@
         }
         if (findCandidate) {
           if (isVoting) {
-          document.querySelector("#email").setAttribute("data-candidate-email", findCandidate.email);
-          document.querySelector("#hide-form").style.display = "block";
-           document.querySelector("#summary-about").style.display = "none";
+            document
+              .querySelector("#email")
+              .setAttribute(
+                "data-candidate-email",
+                `${findCandidate.email}-${findCandidate.id}`
+              );
+            document.querySelector("#hide-form").style.display = "block";
+            document.querySelector("#summary-about").style.display = "none";
             document.querySelector("#summary-label").style.display = "none";
             document.querySelector("#summary-headline").innerText =
               "Enter your email to vote";
@@ -116,7 +140,7 @@
             return false;
           }
           document.querySelector("#hide-form").style.display = "none";
-           document.querySelector("#summary-about").style.display = "block";
+          document.querySelector("#summary-about").style.display = "block";
           document.querySelector("#summary-label").style.display = "block";
           document.querySelector("#hide-summary-image").style.display = "block";
           document.querySelector("#summary-image").src =
@@ -136,12 +160,45 @@
         document.querySelector(".modal-backdrop").style.display = "block";
       }
 
-      function handleVoter() {
-        const email = document.querySelector("#email");
-        const candidateEmail = email.getAttribute("data-candidate-email")
-        console.log(email.value, " and ", candidateEmail)
-        return false;
-        {{/* const header = {
+      async function handleVoter() {
+        const voterEmail = document.querySelector("#email");
+        const [candidate, id] = voterEmail
+          .getAttribute("data-candidate-email")
+          .split("-");
+        const showError = document.getElementById("show-error");
+        showError.style.display = "block";
+        showError.style.background = "#7CB9E8";
+        showError.style.color = "#FFF";
+        const voteCount = document.getElementById(`vote-${id}`)
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        if (!voterEmail.value) {
+          showError.innerText = "Email address is required";
+          return false;
+        }
+        if(!emailRegex.test(voterEmail.value)) {
+          showError.innerText = "Invalid Email address supplied";
+          return false;
+        }
+        console.log(emailRegex.test(voterEmail.value))
+        console.log(voterEmail.value);
+
+        if (!candidate) {
+          showError.innerText = "Email address is required";
+          return false;
+        }
+
+        if (!id) {
+          showError.innerText =
+            "oOPs!, An error occured from our end, kindly refresh the page to try again.";
+          return false;
+        }
+
+        const body = {
+          voter_email: voterEmail.value,
+          candidate_email: candidate,
+        };
+        const header = {
           method: "POST",
           mode: "cors",
           cache: "no-cache",
@@ -150,15 +207,28 @@
           },
           body: JSON.stringify(body),
         };
-        if (!candidate.email) {
-          return alert("Email is required");
-        }
-        const body = {
-          voter_email: candidate.email,
-          candidate_email: candidate.email,
-        };
         const url = "https://backend.steamfunfest.qwizfun.com/user/vote";
-        const resp = fetch(url, header); */}}
+        try {
+          document.getElementById("loader").style.display = "block";
+          document.getElementById("input-btn").setAttribute("disabled", true);
+          document.getElementById("input-btn").style.cursor = "no-drop";
+
+          const resp = await fetch(url, header);
+          const response = await resp.json();
+          if(
+          response.message && 
+          response.message.includes("Vote submitted successfully")
+          ) {
+            voteCount.innerText = "1";
+          }
+          showError.innerText = response.message;
+          voterEmail.value = "";
+        } catch (e) {
+          showError.innerText = "oOps!, An error occured, Please try again";
+        }
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("input-btn").removeAttribute("disabled");
+        document.getElementById("input-btn").style.cursor = "pointer";
       }
     </script>
   </body>
