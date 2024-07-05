@@ -94,11 +94,11 @@
       },
     {
         "id": 11,
-        "name": "Climate Champions",
-        "email": "Olaniranrukayat14@gmail.com",
+        "name": "Munachimso Ohiagu",
+        "email": "adaohiagu@gmail.com",
         "image":
-          "https://res.cloudinary.com/dfeb5lojg/image/upload/v1720137258/lgmi1nlno9keul3hvyna.jpg",
-        "summary": "Our Project showcases a unique approach to upcycling and repurposing waste materials, reducing waste and promoting sustainability."
+          "https://res.cloudinary.com/dfeb5lojg/image/upload/v1720137257/q27zqgfcb9xnhazwtw2d.jpg",
+        "summary": ""
       },
       {
         "id": 12,
@@ -109,16 +109,7 @@
         "summary":
           "Solution: Reduction of plastic wastes for the production of portable seats, which will help reduce its contribution and effects on climate change."
       },
-      {
-        "id": 13,
-        "name": "Eco Warriors",
-        "email": "nduensoekpeyong550@gmail.com",
-        "image":
-          "https://res.cloudinary.com/dfeb5lojg/image/upload/v1720137261/awygkipsk09jci4tjglv.jpg",
-        "summary":
-          "Summary of the Solutions: Creative and innovative use of waste such as pet bottles, bottle caps, plastic spoons, and cake board to  create something of beautiful value to raise awareness about waste management and sustainable practices to promote a circular economy."
-      }
-  ]
+     ]
 
 
 
