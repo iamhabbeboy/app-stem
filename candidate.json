@@ -70,11 +70,11 @@
       },
     {
         "id": 8,
-        "name": "Climate Champions",
-        "email": "Olaniranrukayat14@gmail.com",
+        "name": "Premier Academy Team",
+        "email": "info@premiereacademyng.org",
         "image":
-          "https://res.cloudinary.com/dfeb5lojg/image/upload/v1720137258/lgmi1nlno9keul3hvyna.jpg",
-        "summary": "Our Project showcases a unique approach to upcycling and repurposing waste materials, reducing waste and promoting sustainability."
+          "https://res.cloudinary.com/dfeb5lojg/image/upload/v1720137257/rqs0h4jougsng7rwjogt.jpg",
+        "summary": "The Premiere Academy Team’s project features a solar-powered multipurpose agricultural robot designed for ploughing, planting, and pesticide spraying. It promotes sustainable farming, reduces greenhouse gas emissions, and integrates waste materials for construction, demonstrating innovation and environmental responsibility"
       },
       {
         "id": 9,
@@ -82,8 +82,7 @@
         "email": "gaiussmith89@gmail.com",
         "image":
           "https://res.cloudinary.com/dfeb5lojg/image/upload/v1720137256/hpngma30flhj8ypxs0az.jpg",
-        "summary":
-          "Solution: Reduction of plastic wastes for the production of portable seats, which will help reduce its contribution and effects on climate change."
+        "summary": "Solution: Reduction of plastic wastes for the production of portable seats, which will help reduce its contribution and effects on climate change."
       },
       {
         "id": 10,
