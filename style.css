@@ -3,7 +3,6 @@ body {
 }
 
 .layout {
-    background: #eee;
     display: flex;
     flex-direction: row;
     padding: 10px 0px;
