@@ -1,12 +1,16 @@
 [
     {
       "id": 0,
-      "name": "Matrix Labs",
-      "email": "matrixlab@gmail.com",
+      "name": "ALISGRAM",
+      "email": "adedire64@gmail.com",
       "image":
-        "https://images.unsplash.com/photo-1718964382789-57b24c5c4b97?q=80&w=3088&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://res.cloudinary.com/dfeb5lojg/image/upload/v1720137256/pqfptveb0jqx7herhy91.jpg",
       "summary":
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+        "The Cartonero Cabinet", made from recycled school cartons, stores small
+items like keys, cosmetics, and phones. This functional project promotes
+sustainable consumption and production patterns, aligning with SDG 12 and
+fostering eco-friendly practices in our school community."
+"
     },
     {
         "id": 1,
