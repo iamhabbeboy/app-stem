@@ -139,8 +139,7 @@
               "none";
             return false;
           }
-          document.querySelector("#summary-headline").innerText =
-              "Summary";
+          document.querySelector("#summary-headline").innerText = "Summary";
           document.querySelector("#hide-form").style.display = "none";
           document.querySelector("#summary-about").style.display = "block";
           document.querySelector("#summary-label").style.display = "block";
@@ -171,19 +170,17 @@
         showError.style.display = "block";
         showError.style.background = "#7CB9E8";
         showError.style.color = "#FFF";
-        const voteCount = document.getElementById(`vote-${id}`)
+        const voteCount = document.getElementById(`vote-${id}`);
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
         if (!voterEmail.value) {
           showError.innerText = "Email address is required";
           return false;
         }
-        if(!emailRegex.test(voterEmail.value)) {
+        if (!emailRegex.test(voterEmail.value)) {
           showError.innerText = "Invalid Email address supplied";
           return false;
         }
-        console.log(emailRegex.test(voterEmail.value))
-        console.log(voterEmail.value);
 
         if (!candidate) {
           showError.innerText = "Email address is required";
@@ -210,24 +207,20 @@
           body: JSON.stringify(body),
         };
         const url = "https://backend.steamfunfest.qwizfun.com/user/vote";
-        try {
-          document.getElementById("loader").style.display = "block";
-          document.getElementById("input-btn").setAttribute("disabled", true);
-          document.getElementById("input-btn").style.cursor = "no-drop";
+        document.getElementById("loader").style.display = "block";
+        document.getElementById("input-btn").setAttribute("disabled", true);
+        document.getElementById("input-btn").style.cursor = "no-drop";
 
-          const resp = await fetch(url, header);
-          const response = await resp.json();
-          if(
-          response.message && 
+        const resp = await fetch(url, header);
+        const response = await resp.json();
+        if (
+          response.message &&
           response.message.includes("Vote submitted successfully")
-          ) {
-            voteCount.innerText = "1";
-          }
-          showError.innerText = response.message;
-          voterEmail.value = "";
-        } catch (e) {
-          showError.innerText = "oOps!, An error occured, Please try again";
+        ) {
+          voteCount.innerText = "1";
         }
+        showError.innerText = response.message;
+        voterEmail.value = "";
         document.getElementById("loader").style.display = "none";
         document.getElementById("input-btn").removeAttribute("disabled");
         document.getElementById("input-btn").style.cursor = "pointer";
