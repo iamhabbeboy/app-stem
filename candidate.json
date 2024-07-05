@@ -98,7 +98,7 @@
         "email": "adaohiagu@gmail.com",
         "image":
           "https://res.cloudinary.com/dfeb5lojg/image/upload/v1720137257/q27zqgfcb9xnhazwtw2d.jpg",
-        "summary": ""
+        "summary": "
       },
       {
         "id": 12,
@@ -106,8 +106,9 @@
         "email": "pelumifalodun7@gmail.com",
         "image":
           "https://res.cloudinary.com/dfeb5lojg/image/upload/v1720137257/q27zqgfcb9xnhazwtw2d.jpg",
-        "summary": ""
+        "summary": "
       },
+    
      ]
 
 
