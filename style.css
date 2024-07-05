@@ -6,8 +6,10 @@ body {
     display: flex;
     flex-direction: row;
     padding: 10px 0px;
+    width: 90%;
     flex-wrap: wrap;
     margin: auto;
+    gap: 20px;
 }
 
 .candidate {
