@@ -101,7 +101,7 @@
           item.id
         }, true)">
           <span class="vote-action">Vote </span>
-          <span class="vote-count" id="vote-${item.id}">0</span>
+          <!--<span class="vote-count" id="vote-${item.id}">0</span>-->
         </button>
       </div>`;
             container.innerHTML += itemElement;
@@ -139,6 +139,8 @@
               "none";
             return false;
           }
+          document.querySelector("#summary-headline").innerText =
+              "Summary";
           document.querySelector("#hide-form").style.display = "none";
           document.querySelector("#summary-about").style.display = "block";
           document.querySelector("#summary-label").style.display = "block";
