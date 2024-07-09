@@ -61,9 +61,41 @@
     </div>
     <script>
       let fetchedCandidates = [];
+      let fetchVoteCounts = [];
+      let isLoading = false;
       document.addEventListener("DOMContentLoaded", async (event) => {
         await fetchAndDisplayData();
+        await fetchVoteCount();
       });
+
+      async function fetchVoteCount() {
+        isLoading = true;
+        const response = await fetch("https://backend.steamfunfest.qwizfun.com/user/vote-leaderboard", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+          if (!response.ok) {
+            return alert(
+              "Network response was not ok " + response.statusText
+            );
+          }
+          const result = await response.json();
+          if(result && result.leaderboard) {
+            fetchVoteCounts = result.leaderboard;
+            if(fetchedCandidates) {
+              fetchedCandidates.forEach((candidate) => {
+                const email = candidate.email;
+                const index = candidate.id;
+                const result = fetchVoteCounts.find((vote) => vote.candidate_email === email);
+                const value = result.votes ? result.votes.length : 0;
+                document.querySelector(`#vote-${index}`).innerText = value;
+              });
+            }
+          }
+          isLoading = false;
+      }
 
       async function fetchAndDisplayData() {
         try {
@@ -101,7 +133,11 @@
           item.id
         }, true)">
           <span class="vote-action">Vote </span>
-          <!--<span class="vote-count" id="vote-${item.id}">0</span>-->
+          <span class="vote-count" id="vote-${item.id}"><img
+                  src="loader.svg"
+                  style="width: 30px;height:30px"
+                  alt="loading..."
+                /></span>
         </button>
       </div>`;
             container.innerHTML += itemElement;
